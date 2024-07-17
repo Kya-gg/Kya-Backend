@@ -1,7 +1,9 @@
 package gg.kya.player.dto.response
 
 import gg.kya.player.domain.Player
+import io.swagger.v3.oas.annotations.media.Schema
 
+@Schema(description = "선수 정보 응답")
 data class PlayerResponse(
     val id: Long,
     val name: String,
