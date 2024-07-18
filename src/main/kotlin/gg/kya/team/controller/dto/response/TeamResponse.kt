@@ -1,5 +1,6 @@
 package gg.kya.team.controller.dto.response
 
+import gg.kya.team.domain.Team
 import io.swagger.v3.oas.annotations.media.Schema
 
 @Schema(description = "팀 정보 응답")
@@ -14,4 +15,16 @@ data class TeamResponse(
     val koreanName: String?,
     @Schema(description = "팀 로고 URL")
     val logoURL: String?
-)
+) {
+    companion object {
+        fun from(team: Team): TeamResponse {
+            return TeamResponse(
+                id = team.id.value,
+                leagueId = team.league.id.value,
+                name = team.name,
+                koreanName = team.koreanName,
+                logoURL = team.logoURL
+            )
+        }
+    }
+}

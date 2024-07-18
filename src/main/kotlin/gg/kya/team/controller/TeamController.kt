@@ -2,33 +2,25 @@ package gg.kya.team.controller
 
 import gg.kya.team.api.TeamApi
 import gg.kya.team.controller.dto.response.TeamResponse
+import gg.kya.team.service.TeamService
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
+import org.springframework.web.server.ResponseStatusException
 
 @Controller
-class TeamController : TeamApi {
-    // TODO: Implement this
+class TeamController(
+    private val teamService: TeamService
+) : TeamApi {
     override fun getTeams(leagueId: Long?, count: Int?): List<TeamResponse> {
-        // mock
-        val finalCount = count ?: 10
-
-        return (1..finalCount).map {
-            TeamResponse(
-                id = it.toLong(),
-                leagueId = leagueId ?: 1,
-                name = "Mocking Team $it",
-                koreanName = "모킹 팀 $it",
-                logoURL = null
-            )
-        }
+        return teamService
+            .getTeamsByLeagueId(leagueId, count)
+            .map(TeamResponse::from)
     }
 
-    override fun getLeagueById(teamId: Long): TeamResponse {
-        return TeamResponse(
-            id = teamId,
-            leagueId = 1,
-            name = "Mocking Team $teamId",
-            koreanName = "모킹 팀 $teamId",
-            logoURL = null
-        )
+    override fun getTeamById(teamId: Long): TeamResponse {
+        val team = teamService.getTeamById(teamId)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found")
+
+        return TeamResponse.from(team)
     }
 }

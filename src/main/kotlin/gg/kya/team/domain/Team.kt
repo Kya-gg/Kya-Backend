@@ -11,14 +11,14 @@ class Team(id: EntityID<Long>) : LongEntity(id) {
     companion object : LongEntityClass<Team>(Teams)
 
     var name by Teams.name
-    var league by League referencedOn Teams.league
+    var league by League referencedOn Teams.leagueId
     var koreanName by Teams.koreanName
     var logoURL by Teams.logoURL
 }
 
 object Teams : LongIdTable("team") {
     val name = varchar("name", 50)
-    val league = reference("league_id", Leagues)
+    val leagueId = reference("league_id", Leagues)
     val koreanName = varchar("korean_name", 50).nullable()
     val logoURL = text("logo_url").nullable()
 }

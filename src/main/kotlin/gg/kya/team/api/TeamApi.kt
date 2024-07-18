@@ -18,5 +18,5 @@ interface TeamApi {
 
     @GetMapping("/{teamId}")
     @Operation(summary = "팀 단건 조회", description = "팀을 조회합니다.")
-    fun getLeagueById(@PathVariable teamId: Long): TeamResponse
+    fun getTeamById(@PathVariable teamId: Long): TeamResponse
 }
