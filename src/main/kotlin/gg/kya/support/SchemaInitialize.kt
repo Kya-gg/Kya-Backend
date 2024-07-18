@@ -2,7 +2,7 @@ package gg.kya.support
 
 import gg.kya.league.domain.Leagues
 import gg.kya.player.domain.Players
-import gg.kya.squads.domain.Squads
+import gg.kya.squad.domain.Squads
 import gg.kya.team.domain.Teams
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.springframework.boot.ApplicationArguments
