@@ -1,6 +1,6 @@
 package gg.kya.league.api
 
-import gg.kya.league.dto.response.LeagueResponse
+import gg.kya.league.controller.dto.response.LeagueResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.GetMapping

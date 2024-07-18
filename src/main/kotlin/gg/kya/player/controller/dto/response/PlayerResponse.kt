@@ -1,4 +1,4 @@
-package gg.kya.player.dto.response
+package gg.kya.player.controller.dto.response
 
 import gg.kya.player.domain.Player
 import io.swagger.v3.oas.annotations.media.Schema

@@ -1,7 +1,7 @@
 package gg.kya.player.controller
 
 import gg.kya.player.api.PlayerApi
-import gg.kya.player.dto.response.PlayerResponse
+import gg.kya.player.controller.dto.response.PlayerResponse
 import gg.kya.player.service.PlayerService
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller

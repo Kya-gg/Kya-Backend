@@ -1,7 +1,7 @@
 package gg.kya.league.controller
 
 import gg.kya.league.api.LeagueApi
-import gg.kya.league.dto.response.LeagueResponse
+import gg.kya.league.controller.dto.response.LeagueResponse
 import org.springframework.stereotype.Controller
 
 @Controller

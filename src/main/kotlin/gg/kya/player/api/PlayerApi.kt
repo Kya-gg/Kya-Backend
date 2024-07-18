@@ -1,6 +1,6 @@
 package gg.kya.player.api
 
-import gg.kya.player.dto.response.PlayerResponse
+import gg.kya.player.controller.dto.response.PlayerResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.GetMapping

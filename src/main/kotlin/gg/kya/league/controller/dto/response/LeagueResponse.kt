@@ -1,4 +1,4 @@
-package gg.kya.league.dto.response
+package gg.kya.league.controller.dto.response
 
 import io.swagger.v3.oas.annotations.media.Schema
 
