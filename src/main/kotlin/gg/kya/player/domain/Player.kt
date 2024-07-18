@@ -20,7 +20,7 @@ class Player(id: EntityID<Long>) : LongEntity(id) {
     var photoURL by Players.photoURL
 }
 
-object Players : LongIdTable("players") {
+object Players : LongIdTable("player") {
     val name = varchar("name", 50)
     val firstName = varchar("first_name", 50)
     val lastName = varchar("last_name", 50)
@@ -31,5 +31,3 @@ object Players : LongIdTable("players") {
     val weight = uinteger("weight").nullable()
     val photoURL = varchar("photo_url", 255).nullable()
 }
-
-
