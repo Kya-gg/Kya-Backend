@@ -1,8 +1,8 @@
-package gg.kya.squads.controller
+package gg.kya.squad.controller
 
-import gg.kya.squads.api.SquadApi
-import gg.kya.squads.controller.dto.response.SquadPlayerResponse
-import gg.kya.squads.controller.dto.response.SquadResponse
+import gg.kya.squad.api.SquadApi
+import gg.kya.squad.controller.dto.response.SquadPlayerResponse
+import gg.kya.squad.controller.dto.response.SquadResponse
 import org.springframework.stereotype.Controller
 
 @Controller

@@ -1,4 +1,4 @@
-package gg.kya.squads.controller.dto.response
+package gg.kya.squad.controller.dto.response
 
 import io.swagger.v3.oas.annotations.media.Schema
 

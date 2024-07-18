@@ -1,4 +1,4 @@
-package gg.kya.squads.domain
+package gg.kya.squad.domain
 
 import gg.kya.player.domain.Players
 import gg.kya.team.domain.Teams

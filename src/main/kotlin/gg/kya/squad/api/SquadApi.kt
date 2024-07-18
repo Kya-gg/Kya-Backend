@@ -1,6 +1,6 @@
-package gg.kya.squads.api
+package gg.kya.squad.api
 
-import gg.kya.squads.controller.dto.response.SquadResponse
+import gg.kya.squad.controller.dto.response.SquadResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
