@@ -15,6 +15,6 @@ class PlayerController(
         val player = playerService.findPlayerById(playerId)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "Player not found")
 
-        return PlayerResponse.of(player)
+        return PlayerResponse.from(player)
     }
 }

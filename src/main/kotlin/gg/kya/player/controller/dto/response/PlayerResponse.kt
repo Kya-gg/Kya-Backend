@@ -17,7 +17,7 @@ data class PlayerResponse(
     val photoURL: String?
 ) {
     companion object {
-        fun of(player: Player): PlayerResponse {
+        fun from(player: Player): PlayerResponse {
             return PlayerResponse(
                 id = player.id.value,
                 name = player.name,
