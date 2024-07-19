@@ -54,9 +54,10 @@ class PlayerStatistic(id: EntityID<Long>) : LongEntity(id) {
 
     // PENALTY
     var penaltyWon by PlayerStatistics.penaltyWon
-    var penaltyCommited by PlayerStatistics.penaltyCommited
+    var penaltyCommitted by PlayerStatistics.penaltyCommitted
     var penaltyScored by PlayerStatistics.penaltyScored
     var penaltyMissed by PlayerStatistics.penaltyMissed
+    var penaltySaved by PlayerStatistics.penaltySaved
 
 }
 
@@ -100,7 +101,8 @@ object PlayerStatistics : LongIdTable("player_statistic") {
 
     // PENALTY
     val penaltyWon = integer("penalty_won").nullable()
-    val penaltyCommited = integer("penalty_commited").nullable()
+    val penaltyCommitted = integer("penalty_committed").nullable()
     val penaltyScored = integer("penalty_scored").nullable()
     val penaltyMissed = integer("penalty_missed").nullable()
+    val penaltySaved = integer("penalty_saved").nullable()
 }
