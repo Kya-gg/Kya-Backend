@@ -2,7 +2,7 @@ package gg.kya.support
 
 import gg.kya.league.domain.Leagues
 import gg.kya.player.domain.Players
-import gg.kya.squad.domain.Squads
+import gg.kya.squad.domain.SquadPlayers
 import gg.kya.statistic.player.domain.PlayerStatistics
 import gg.kya.team.domain.Teams
 import org.jetbrains.exposed.sql.SchemaUtils
@@ -19,6 +19,6 @@ class SchemaInitialize : ApplicationRunner {
         SchemaUtils.create(PlayerStatistics)
         SchemaUtils.create(Leagues)
         SchemaUtils.create(Teams)
-        SchemaUtils.create(Squads)
+        SchemaUtils.create(SquadPlayers)
     }
 }

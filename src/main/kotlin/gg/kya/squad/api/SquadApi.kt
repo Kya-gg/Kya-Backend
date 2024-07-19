@@ -12,5 +12,5 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/v1/squads")
 interface SquadApi {
     @GetMapping("/{teamId}")
-    fun getTeamSquad(@PathVariable teamId: Long): SquadResponse
+    fun getSquad(@PathVariable teamId: Long): SquadResponse
 }
