@@ -1,5 +1,6 @@
 package gg.kya.statistic.player.controller.dto.response
 
+import gg.kya.statistic.player.domain.PlayerStatistic
 import io.swagger.v3.oas.annotations.media.Schema
 
 @Schema(description = "선수 통계 응답")
@@ -17,6 +18,74 @@ data class PlayerStatisticResponse(
     val cards: Cards,
     val penalty: Penalty
 ) {
+    companion object {
+        fun from(
+            playerStatistic: PlayerStatistic
+        ): PlayerStatisticResponse {
+            val shots = Shots(
+                total = playerStatistic.shotsTotal,
+                onTarget = playerStatistic.shotsOnTarget
+            )
+
+            val goals = Goals(
+                total = playerStatistic.goalsTotal,
+                conceded = playerStatistic.goalsConceded,
+                assists = playerStatistic.goalsAssists,
+                saves = playerStatistic.goalsSaves
+            )
+
+            val passes = Passes(
+                total = playerStatistic.passesTotal,
+                key = playerStatistic.passesKey,
+                accuracy = playerStatistic.passesAccuracy
+            )
+
+            val tackles = Tackles(
+                total = playerStatistic.tacklesTotal,
+                blocks = playerStatistic.tacklesBlocks,
+                interceptions = playerStatistic.tacklesInterceptions
+            )
+
+            val duels = Duels(
+                total = playerStatistic.duelsTotal,
+                won = playerStatistic.duelsWon
+            )
+
+            val fouls = Fouls(
+                drawn = playerStatistic.foulsDrawn,
+                committed = playerStatistic.foulsCommitted
+            )
+
+            val cards = Cards(
+                yellow = playerStatistic.cardsYellow,
+                red = playerStatistic.cardsRed
+            )
+
+            val penalty = Penalty(
+                won = playerStatistic.penaltyWon,
+                committed = playerStatistic.penaltyCommitted,
+                scored = playerStatistic.penaltyScored,
+                missed = playerStatistic.penaltyMissed,
+                saved = playerStatistic.penaltySaved
+            )
+
+            return PlayerStatisticResponse(
+                playerId = playerStatistic.player.id.value,
+                teamId = playerStatistic.team.id.value,
+                leagueId = playerStatistic.league.id.value,
+                season = playerStatistic.season,
+                shots = shots,
+                goals = goals,
+                passes = passes,
+                tackles = tackles,
+                duels = duels,
+                fouls = fouls,
+                cards = cards,
+                penalty = penalty
+            )
+        }
+    }
+
     @Schema(description = "슛 통계")
     data class Shots(
         @Schema(description = "총 슛 수") val total: Int?,
