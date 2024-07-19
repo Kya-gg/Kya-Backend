@@ -2,24 +2,25 @@ package gg.kya.league.controller
 
 import gg.kya.league.api.LeagueApi
 import gg.kya.league.controller.dto.response.LeagueResponse
+import gg.kya.league.service.LeagueService
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
+import org.springframework.web.server.ResponseStatusException
 
 @Controller
-class LeagueController : LeagueApi {
-    // TODO: Implement this
+class LeagueController(
+    private val leagueService: LeagueService
+) : LeagueApi {
     override fun getLeagues(count: Int?): List<LeagueResponse> {
-        val finalCount = count ?: 10
-        val leagues = mutableListOf<LeagueResponse>()
-
-        for (i in 1..finalCount) {
-            leagues.add(LeagueResponse(i.toLong(), "Mocking League $i", null))
-        }
-
-        return leagues
+        return leagueService
+            .findAll(count)
+            .map(LeagueResponse::from)
     }
 
-    // TODO: Implement this
     override fun getLeagueById(leagueId: Long): LeagueResponse {
-        return LeagueResponse(leagueId, "Mocking League $leagueId", null)
+        val league = leagueService.findByLeagueId(leagueId)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "League not found")
+
+        return LeagueResponse.from(league)
     }
 }
