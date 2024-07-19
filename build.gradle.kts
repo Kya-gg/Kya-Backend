@@ -7,40 +7,49 @@ plugins {
     kotlin("plugin.spring") version "1.9.23"
 }
 
-group = "gg.kya"
-version = "0.0.1-SNAPSHOT"
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-}
-
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
 
+subprojects {
+    if (name == "modules") return@subprojects
+    if (name == "kya-football") return@subprojects
 
-    implementation("com.mysql:mysql-connector-j")
-    implementation("org.jetbrains.exposed:exposed-spring-boot-starter:${properties["exposedVersion"]}")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:${properties["exposedVersion"]}")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+    group = "gg.kya"
+    version = "0.0.1-SNAPSHOT"
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
     }
-}
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+    dependencies {
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+
+        implementation("com.mysql:mysql-connector-j")
+        implementation("org.jetbrains.exposed:exposed-spring-boot-starter:${properties["exposedVersion"]}")
+        implementation("org.jetbrains.exposed:exposed-kotlin-datetime:${properties["exposedVersion"]}")
+
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs += "-Xjsr305=strict"
+            jvmTarget = "17"
+        }
+    }
 }
