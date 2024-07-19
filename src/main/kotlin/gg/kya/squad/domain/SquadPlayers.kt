@@ -24,5 +24,6 @@ object SquadPlayers : LongIdTable("squad_player") {
     val number = integer("number").nullable()
     val position = varchar("position", 25).nullable()
 
+    @Suppress("unused")
     val teamPlayerUniqueKey = uniqueIndex(playerId, teamId)
 }
