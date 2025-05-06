@@ -1,9 +1,11 @@
 package gg.kya.football.collector.base
 
-interface Converter<InternalDTO, ExternalDTO> {
-    fun convert(externalDTO: ExternalDTO): InternalDTO
+import gg.kya.football.collector.DataProvider
 
-    fun convertBatch(externalDTOs: List<ExternalDTO>): List<InternalDTO> {
-        return externalDTOs.map { convert(it) }
+interface Converter<InternalDTO, ExternalDTO> {
+    fun convert(externalDTO: ExternalDTO, dataProvider: DataProvider): InternalDTO
+
+    fun convertBatch(externalDTOs: List<ExternalDTO>, dataProvider: DataProvider): List<InternalDTO> {
+        return externalDTOs.map { convert(it, dataProvider) }
     }
 }
