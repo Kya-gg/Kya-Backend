@@ -15,6 +15,6 @@ class League(id: EntityID<Long>) : LongEntity(id) {
 
 object Leagues : LongIdTable("league") {
     val name = varchar("name", 50)
-    val koreanName = varchar("region", 50).nullable()
+    val koreanName = varchar("koreanName", 50).nullable()
     val logoURL = text("logo_url").nullable()
 }
